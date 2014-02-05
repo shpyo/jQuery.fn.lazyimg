@@ -1,6 +1,7 @@
-$.fn.lazyimg = function(offset) {
+$.fn.lazyimg = function(options) {
 
-  offset = offset || 0;
+  options.offset = options.offset || 0;
+  options.attr = options.attr || 'lazy-img-url';
 
   $(this).each(function() {
     
@@ -11,6 +12,15 @@ $.fn.lazyimg = function(offset) {
     
     if(!$img.is(':visible')) {
       return;
+    }
+    
+    windowHeight = $(window).height(),
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+		imgTop = $img.offset().top;
+
+    if (scrollTop + windowHeight + options.offset > imgTop) {
+            
+    	$img.attr('src', $img.attr(options.attr));
     }
   });
 };
