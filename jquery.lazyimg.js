@@ -1,0 +1,3 @@
+$.fn.lazyimg = function(options) {
+
+};
