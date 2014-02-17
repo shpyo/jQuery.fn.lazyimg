@@ -30,7 +30,9 @@
   
       if (scrollTop + windowHeight + options.offset > imgTop) {
   
-      	$img.attr('src', $img.attr(options.attr));
+      	$img
+      	  .attr('src', $img.attr(options.attr))
+      	  .removeAttr(options.attr);
       }
     });
   };
